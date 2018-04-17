@@ -8,12 +8,12 @@ namespace RefactorKata
     {
         static void Main(string[] args)
         {
-            List<Product> products = new List<Product>();
+            var products = new List<Product>();
 
             using (var conn = new SqlConnection("Server = .; " +
-     "Database = myDataBase; " +
-     "User Id = myUsername; " +
-     "Password = myPassword;"))
+                                                "Database = myDataBase; " +
+                                                "User Id = myUsername; " +
+                                                "Password = myPassword;"))
             {
                 var cmd = conn.CreateCommand();
                 cmd.CommandText = "select * from Products";
@@ -24,7 +24,6 @@ namespace RefactorKata
                 {
                     products.Add(new Product { Name = reader["Name"].ToString() });
                 }
-
             }
 
             Console.WriteLine("Products Loaded!");
